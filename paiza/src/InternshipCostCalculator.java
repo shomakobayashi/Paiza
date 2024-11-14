@@ -27,7 +27,7 @@ public class InternshipCostCalculator {
         // 各インターンシップ間のコストを計算
         for (int i = 0; i < numOfInternships - 1; i++) {
             // インターンシップ間の宿泊日数を計算
-            int gapDays = endDates[i] - startDates[i];
+            int gapDays = (startDates[i+1]) -  endDates[i];
 
             // ホテルに泊まり続ける場合のコスト
             int stayCost = gapDays * hotelCost;
