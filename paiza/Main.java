@@ -1,43 +1,31 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // 標準入力からデータを取得する
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine().trim();
         
-        // パイザ記法の式を解析して計算する
-        int result = parseAndCalculate(input);
+        // 入力: 学生の人数 N と合格点 M
+        int N = scanner.nextInt();
+        int M = scanner.nextInt();
+        List<Integer> passList = new ArrayList<>();
         
-        // 結果を出力する
-        System.out.println(result);
-    }
-
-    private static int parseAndCalculate(String input) {
-        String[] tokens = input.split("\\+");
-        int sum = 0;
-
-        for (String token : tokens) {
-            sum += parseNumber(token);
+        for (int i = 1; i <= N; i++) {
+            // 各学生のテスト点数と欠席回数を入力
+            int testScore = scanner.nextInt();
+            int absences = scanner.nextInt();
+            
+            // 成績を計算
+            int score = Math.max(testScore - 5 * absences, 0);
+            
+            // 成績が合格点以上なら学籍番号を出力
+            if (score >= M) {
+               passList.add(i);
+            }
         }
-
-        return sum;
-    }
-
-    private static int parseNumber(String token) {
-        int tens = 0;
-        int ones = 0;
-
-        int i = 0;
-        while (i < token.length() && token.charAt(i) == '<') {
-            tens++;
-            i++;
+        for (int i : passList) {
+            System.out.println(i);
         }
-        while (i < token.length() && token.charAt(i) == '/') {
-            ones++;
-            i++;
-        }
-
-        return tens * 10 + ones;
     }
 }
