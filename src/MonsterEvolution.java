@@ -22,7 +22,7 @@ public class MonsterEvolution {
         for (int i = 0; i < n; i++) {
             String line = scanner.nextLine();
             String[] parts = line.split(" ");
-            String name = parts[0];
+            String name = parts[01];
             int minAtk = Integer.parseInt(parts[1]);
             int maxAtk = Integer.parseInt(parts[2]);
             int minDef = Integer.parseInt(parts[3]);
